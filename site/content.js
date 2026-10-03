@@ -21,7 +21,7 @@ window.SITE_CONTENT = {
   hero: {
     brand: "Left Click",
     title: "Tech that makes sense",
-    lede: "Privacy, fewer bills, and tech you actually own — built in Los Angeles with gear you already have.",
+    lede: "Savings · Security · Sustainability · Self-sufficiency Made Simple",
     cta: "Get in touch",
   },
   outcomes: {
