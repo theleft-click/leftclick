@@ -26,7 +26,25 @@
       if (!path) return;
       var value = getByPath(content, path);
       if (value == null || typeof value === "object") return;
-      el.innerHTML = value; // This correctly renders raw SVG tags
+      
+      try {
+        // Create a virtual DOM parser to safely process the SVG layout
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(value, "image/svg+xml");
+        var svgElement = doc.querySelector("svg");
+        
+        if (svgElement) {
+          // Clear old structural text fallback and append the live SVG element node
+          el.innerHTML = "";
+          el.appendChild(svgElement);
+        } else {
+          // Fallback to standard innerHTML string injection if no SVG object is found
+          el.innerHTML = value;
+        }
+      } catch (e) {
+        // Final backup string injection block
+        el.innerHTML = value;
+      }
     });
 
     document.querySelectorAll("[data-content-href]").forEach(function (el) {
