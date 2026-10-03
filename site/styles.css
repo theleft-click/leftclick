@@ -674,6 +674,19 @@ textarea:focus-visible {
   opacity: 0.5;
 }
 
+.footer-inner a svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  opacity: 0.7;
+  transition: opacity 0.2s var(--ease);
+  vertical-align: middle;
+}
+
+.footer-inner a svg:hover {
+  opacity: 1;
+}
+
 .footer-copy {
   margin: 0.85rem 0 0;
   font-size: 0.85rem;

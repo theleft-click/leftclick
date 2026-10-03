@@ -20,6 +20,15 @@
       setText(el, value);
     });
 
+    // 2. NEW: HTML/SVG content binder
+    document.querySelectorAll("[data-content-html]").forEach(function (el) {
+      var path = el.getAttribute("data-content-html");
+      if (!path) return;
+      var value = getByPath(content, path);
+      if (value == null || typeof value === "object") return;
+      el.innerHTML = value; // This correctly renders raw SVG tags
+    });
+
     document.querySelectorAll("[data-content-href]").forEach(function (el) {
       var path = el.getAttribute("data-content-href");
       if (!path) return;
